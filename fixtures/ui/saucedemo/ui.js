@@ -1,5 +1,5 @@
-import { test as apiTest, expect } from "./api.js";
-import { LoginPage } from "../pages/LoginPage.js";
+import { test as apiTest, expect } from "../../api/gorest/api.js";
+import { LoginPage } from "../../../pages/ui/saucedemo/LoginPage.js";
 
 export const test = apiTest.extend({
     loggedInPage: async ({ page }, use) => {

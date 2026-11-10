@@ -1,5 +1,5 @@
-import { test, expect } from "../fixtures/test.js";
-import { InventoryPage } from "../pages/InventoryPage.js";
+import { test, expect } from "../../../fixtures/ui/saucedemo/ui.js";
+import { InventoryPage } from "../../../pages/ui/saucedemo/InventoryPage.js";
 
 test("sort products A to Z", async ({ loggedInPage }) => {
     const inventoryPage = new InventoryPage(loggedInPage);

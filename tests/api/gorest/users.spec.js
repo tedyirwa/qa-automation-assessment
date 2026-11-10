@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { test, expect } from "../../fixtures/api.js";
+import { test, expect } from "../../../fixtures/api/gorest/api.js";
 
 async function createUser(api) {
     const response = await api.post("users", {

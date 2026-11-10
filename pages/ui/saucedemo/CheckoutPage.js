@@ -1,9 +1,9 @@
 export class CheckoutPage {
     constructor(page) {
         this.page = page;
-        this.firstNameInput = page.getByTestId("firstName");
-        this.lastNameInput = page.getByTestId("lastName");
-        this.postalCodeInput = page.getByTestId("postalCode");
+        this.firstNameInput = page.getByLabel("First Name");
+        this.lastNameInput = page.getByLabel("Last Name");
+        this.postalCodeInput = page.getByLabel("Zip/Postal Code");
         this.continueButton = page.getByTestId("continue");
         this.finishButton = page.getByTestId("finish");
         this.completeMessage = page.getByTestId("complete-header");

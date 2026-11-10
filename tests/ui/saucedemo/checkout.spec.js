@@ -1,6 +1,7 @@
-import { test, expect } from "../fixtures/test.js";
-import { CartPage } from "../pages/CartPage.js";
-import { CheckoutPage } from "../pages/CheckoutPage.js";
+import { test, expect } from "../../../fixtures/ui/saucedemo/ui.js";
+import { InventoryPage } from "../../../pages/ui/saucedemo/InventoryPage.js";
+import { CheckoutPage } from "../../../pages/ui/saucedemo/CheckoutPage.js";
+import { CartPage } from "../../../pages/ui/saucedemo/CartPage.js";
 
 test("complete product checkout", async ({ loggedInPage, api }) => {
     const response = await api.get("users");
