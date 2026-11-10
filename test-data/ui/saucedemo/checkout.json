@@ -1,0 +1,13 @@
+{
+    "customer": {
+        "firstName": "Tedy",
+        "lastName": "Irwa",
+        "postalCode": "5012311"
+    },
+    "product": {
+        "name": "Sauce Labs Backpack"
+    },
+    "expected": {
+        "completeMessage": "Thank you for your order!"
+    }
+}
