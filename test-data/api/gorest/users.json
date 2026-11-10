@@ -1,0 +1,11 @@
+{
+    "validUser": {
+        "name": "Tedy",
+        "email": "tedy@irwa.com",
+        "gender": "male",
+        "status": "active"
+    },
+    "updatedUser": {
+        "name": "Tedy UPdated"
+    }
+}
