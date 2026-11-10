@@ -1,7 +1,7 @@
-import { test as base, expect } from "@playwright/test";
+import { test as apiTest, expect } from "./api.js";
 import { LoginPage } from "../pages/LoginPage.js";
 
-export const test = base.extend({
+export const test = apiTest.extend({
     loggedInPage: async ({ page }, use) => {
         const loginPage = new LoginPage(page);
 

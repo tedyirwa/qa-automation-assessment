@@ -2,7 +2,10 @@ import { test, expect } from "../fixtures/test.js";
 import { CartPage } from "../pages/CartPage.js";
 import { CheckoutPage } from "../pages/CheckoutPage.js";
 
-test("complete product checkout", async ({ loggedInPage }) => {
+test("complete product checkout", async ({ loggedInPage, api }) => {
+    const response = await api.get("users");
+
+    expect(response.status()).toBe(200);
     const cartPage = new CartPage(loggedInPage);
     const checkoutPage = new CheckoutPage(loggedInPage);
 
