@@ -1,15 +1,8 @@
-import { test, expect } from "@playwright/test";
-import { LoginPage } from "../pages/LoginPage.js";
+import { test, expect } from "../fixtures/test.js";
 import { InventoryPage } from "../pages/InventoryPage.js";
 
-test("sort products A to Z", async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const inventoryPage = new InventoryPage(page);
-
-    await page.goto("/");
-    await loginPage.login("standard_user", "secret_sauce");
-
-    await expect(page.getByTestId("title")).toHaveText("Products");
+test("sort products A to Z", async ({ loggedInPage }) => {
+    const inventoryPage = new InventoryPage(loggedInPage);
 
     await inventoryPage.sortBy("az");
 
@@ -20,18 +13,12 @@ test("sort products A to Z", async ({ page }) => {
     expect(productNames).toEqual(sortedNames);
 });
 
-test("sort products by lowest price", async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const inventoryPage = new InventoryPage(page);
-
-    await page.goto("/");
-    await loginPage.login("standard_user", "secret_sauce");
-
-    await expect(page.getByTestId("title")).toHaveText("Products");
+test("sort products by lowest price", async ({ loggedInPage }) => {
+    const inventoryPage = new InventoryPage(loggedInPage);
 
     await inventoryPage.sortBy("lohi");
 
-    const productPrices = await page.getByTestId("inventory-item-price").allTextContents();
+    const productPrices = await loggedInPage.getByTestId("inventory-item-price").allTextContents();
 
     const prices = productPrices.map((price) => Number(price.replace("$", "")));
 
@@ -39,18 +26,12 @@ test("sort products by lowest price", async ({ page }) => {
     expect(prices).toEqual([...prices].sort((a, b) => a - b));
 });
 
-test("sort products by highest price", async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const inventoryPage = new InventoryPage(page);
-
-    await page.goto("/");
-    await loginPage.login("standard_user", "secret_sauce");
-
-    await expect(page.getByTestId("title")).toHaveText("Products");
+test("sort products by highest price", async ({ loggedInPage }) => {
+    const inventoryPage = new InventoryPage(loggedInPage);
 
     await inventoryPage.sortBy("hilo");
 
-    const productPrices = await page.getByTestId("inventory-item-price").allTextContents();
+    const productPrices = await loggedInPage.getByTestId("inventory-item-price").allTextContents();
 
     const prices = productPrices.map((price) => Number(price.replace("$", "")));
 
@@ -58,14 +39,8 @@ test("sort products by highest price", async ({ page }) => {
     expect(prices).toEqual([...prices].sort((a, b) => b - a));
 });
 
-test("sort products Z to A", async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const inventoryPage = new InventoryPage(page);
-
-    await page.goto("/");
-    await loginPage.login("standard_user", "secret_sauce");
-
-    await expect(page.getByTestId("title")).toHaveText("Products");
+test("sort products Z to A", async ({ loggedInPage }) => {
+    const inventoryPage = new InventoryPage(loggedInPage);
 
     await inventoryPage.sortBy("za");
 
