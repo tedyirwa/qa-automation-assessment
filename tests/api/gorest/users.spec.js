@@ -1,23 +1,9 @@
-import { randomUUID } from "node:crypto";
 import { test, expect } from "../../../fixtures/api/gorest/api.js";
 import userData from "../../../test-data/api/gorest/users.json" with { type: "json" };
-
-async function createUser(api) {
-    const response = await api.post("users", {
-        data: {
-            name: userData.validUser.name,
-            email: `tedy-${randomUUID()}@irwa.com`,
-            status: userData.validUser.status,
-        },
-    });
-
-    expect(response.status()).toBe(201);
-
-    return await response.json();
-}
+import { createUser } from "../../../helpers/api/gorest/user.helper.js";
 
 test("create a user", async ({ api }) => {
-    const user = await createUser(api);
+    const user = await createUser(api, userData);
 
     expect(user.name).toBe(userData.validUser.name);
     expect(user.status).toBe(userData.validUser.status);
@@ -25,7 +11,7 @@ test("create a user", async ({ api }) => {
 });
 
 test("get a user", async ({ api }) => {
-    const createdUser = await createUser(api);
+    const createdUser = await createUser(api, userData);
 
     const response = await api.get(`users/${createdUser.id}`);
 
@@ -40,7 +26,7 @@ test("get a user", async ({ api }) => {
 });
 
 test("update a user", async ({ api }) => {
-    const createdUser = await createUser(api);
+    const createdUser = await createUser(api, userData);
 
     const response = await api.patch(`users/${createdUser.id}`, {
         data: {
